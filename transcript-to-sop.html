@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Turn a Process Transcript Into an SOP | Mackanic Technologies</title>
+  <meta name="description" content="A practical seven-step method for converting a process recording or transcript into a controlled SOP with source traceability, exceptions, quality checks, and a cold-read test.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://max-agent-hub.github.io/transcript-to-sop.html">
+  <meta property="og:title" content="How to Turn a Process Transcript Into an SOP">
+  <meta property="og:description" content="Separate decided process facts from transcript noise, preserve source references, resolve unknowns, and release a procedure someone else can run.">
+  <meta property="og:image" content="https://max-agent-hub.github.io/sop-service-cover.png">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="900">
+  <link rel="icon" href="sop-service-cover.png" type="image/png">
+  <link rel="canonical" href="https://max-agent-hub.github.io/transcript-to-sop.html">
+  <style>
+    :root {
+      --ink: #121313;
+      --paper: #ffffff;
+      --surface: #f0f2f1;
+      --workbench: #d9dedb;
+      --muted: #5b615e;
+      --rule: #b9bfbc;
+      --orange: #e44a2c;
+      --orange-dark: #b9331d;
+      --blue: #1954d1;
+      --green: #234238;
+      --max: 1180px;
+      --reading: 820px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      letter-spacing: 0;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      text-underline-offset: 4px;
+    }
+
+    .intro {
+      padding: 58px 0 44px;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.28fr);
+      gap: 72px;
+      align-items: end;
+    }
+
+    .kicker,
+    .section-label,
+    .step-number {
+      margin: 0;
+      color: var(--orange-dark);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 820px;
+      margin: 13px 0 17px;
+      font-size: 50px;
+      font-weight: 750;
+      line-height: 1.04;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 0;
+      color: #353937;
+      font-size: 18px;
+    }
+
+    .outcome {
+      padding-left: 18px;
+      border-left: 4px solid var(--green);
+    }
+
+    .outcome strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .outcome p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .method-strip {
+      border-bottom: 1px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .method-grid li {
+      min-height: 84px;
+      padding: 15px 14px;
+      border-right: 1px solid var(--rule);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .method-grid li:first-child {
+      padding-left: 0;
+    }
+
+    .method-grid li:last-child {
+      padding-right: 0;
+      border-right: 0;
+    }
+
+    .method-grid span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--orange-dark);
+      font-family: Consolas, Monaco, monospace;
+      font-size: 11px;
+    }
+
+    .article {
+      padding: 64px 0 76px;
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: minmax(0, var(--reading)) 240px;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .article-layout > * {
+      min-width: 0;
+    }
+
+    .article h2 {
+      margin: 0 0 16px;
+      font-size: 31px;
+      line-height: 1.18;
+    }
+
+    .article h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+
+    .article p {
+      margin: 0 0 16px;
+      color: #333735;
+    }
+
+    .article-intro {
+      margin-bottom: 40px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .article-intro p:first-of-type {
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 20px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .step-number {
+      padding-top: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+    }
+
+    .plain-list,
+    .check-list {
+      margin: 14px 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plain-list li,
+    .check-list li {
+      position: relative;
+      margin: 9px 0;
+      padding-left: 19px;
+      color: #343936;
+      font-size: 14px;
+    }
+
+    .plain-list li::before {
+      position: absolute;
+      left: 0;
+      color: var(--orange-dark);
+      content: "+";
+      font-weight: 800;
+    }
+
+    .check-list li::before {
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 11px;
+      height: 11px;
+      border: 1px solid var(--green);
+      content: "";
+    }
+
+    .process-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 19px 0 3px;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .process-box div {
+      min-height: 82px;
+      padding: 14px 18px 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .process-box div:nth-child(even) {
+      padding-right: 0;
+      padding-left: 18px;
+      border-left: 1px solid var(--rule);
+    }
+
+    .process-box div:nth-last-child(-n + 2) {
+      border-bottom: 0;
+    }
+
+    .process-box span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .process-box strong {
+      font-size: 14px;
+    }
+
+    .evidence-section {
+      margin: 46px 0;
+      padding: 38px 0;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--rule);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 36%;
+      padding-left: 0;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 39%;
+    }
+
+    th:last-child,
+    td:last-child {
+      width: 25%;
+      padding-right: 0;
+    }
+
+    td {
+      color: #373c39;
+      font-size: 13px;
+    }
+
+    .status {
+      color: var(--orange-dark);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .aside {
+      position: sticky;
+      top: 24px;
+    }
+
+    .aside nav,
+    .aside-block {
+      border-top: 1px solid var(--ink);
+    }
+
+    .aside nav {
+      padding-top: 14px;
+    }
+
+    .aside nav a {
+      display: block;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .aside-block {
+      margin-top: 28px;
+      padding-top: 15px;
+    }
+
+    .aside-block p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .visual-proof {
+      margin: 46px 0;
+      padding: 18px;
+      border: 1px solid #8b928e;
+      background: var(--workbench);
+    }
+
+    .visual-proof img {
+      border: 1px solid #8b928e;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .security {
+      margin: 42px 0;
+      padding: 26px 28px;
+      color: var(--paper);
+      background: var(--green);
+    }
+
+    .security h2 {
+      margin-bottom: 9px;
+      font-size: 24px;
+    }
+
+    .security p {
+      margin: 0;
+      color: #e0e8e4;
+      font-size: 14px;
+    }
+
+    .release-gate {
+      margin-top: 42px;
+      padding-top: 34px;
+      border-top: 2px solid var(--ink);
+    }
+
+    .tools-band {
+      padding: 54px 0;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: var(--surface);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 0.34fr 0.66fr;
+      gap: 72px;
+    }
+
+    .tools-band h2 {
+      margin: 6px 0 0;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .tool-list {
+      border-top: 1px solid var(--ink);
+    }
+
+    .tool-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .tool-row strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .tool-row span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .tool-row a {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      text-underline-offset: 4px;
+      white-space: nowrap;
+    }
+
+    .contact {
+      padding: 58px 0;
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      max-width: 760px;
+      margin: 7px 0 9px;
+      font-size: 34px;
+      line-height: 1.16;
+    }
+
+    .contact p:not(.section-label) {
+      margin: 0;
+      color: #c9cecb;
+      font-size: 14px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 17px;
+      border: 1px solid var(--paper);
+      border-radius: 3px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: var(--paper);
+    }
+
+    footer {
+      padding: 22px 0;
+      font-size: 11px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: var(--muted);
+    }
+
+    .footer-row a {
+      color: var(--ink);
+      font-weight: 700;
+      text-underline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .intro-grid,
+      .article-layout,
+      .tools-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-grid,
+      .tools-grid,
+      .contact-grid {
+        gap: 30px;
+      }
+
+      .article-layout {
+        gap: 48px;
+      }
+
+      .aside {
+        position: static;
+        order: -1;
+      }
+
+      .aside nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 20px;
+      }
+
+      .aside-block {
+        display: none;
+      }
+
+      .method-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .method-grid li:nth-child(4) {
+        border-right: 0;
+      }
+
+      .method-grid li:nth-child(-n + 4) {
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .method-grid li:nth-child(5) {
+        padding-left: 0;
+      }
+
+      .contact .button {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: calc(100% - 30px);
+      }
+
+      .nav {
+        min-height: 74px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+
+      .intro {
+        padding: 40px 0 32px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .method-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .method-grid li,
+      .method-grid li:first-child,
+      .method-grid li:nth-child(5) {
+        min-height: 72px;
+        padding: 12px;
+        border-right: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .method-grid li:nth-child(odd) {
+        padding-left: 0;
+      }
+
+      .method-grid li:nth-child(even) {
+        border-right: 0;
+      }
+
+      .method-grid li:last-child {
+        border-bottom: 0;
+      }
+
+      .article {
+        padding: 46px 0 56px;
+      }
+
+      .article h2 {
+        font-size: 27px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 28px 0;
+      }
+
+      .process-box {
+        grid-template-columns: 1fr;
+      }
+
+      .process-box div,
+      .process-box div:nth-child(even),
+      .process-box div:nth-last-child(-n + 2) {
+        padding: 13px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--rule);
+        border-left: 0;
+      }
+
+      .process-box div:last-child {
+        border-bottom: 0;
+      }
+
+      .aside nav {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-proof {
+        margin-right: -15px;
+        margin-left: -15px;
+        padding: 8px;
+      }
+
+      .security {
+        margin-right: -15px;
+        margin-left: -15px;
+        padding: 24px 15px;
+      }
+
+      .tools-band {
+        padding: 44px 0;
+      }
+
+      .tool-row {
+        align-items: start;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .contact h2 {
+        font-size: 29px;
+      }
+
+      .contact .button {
+        width: 100%;
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">Mackanic Technologies</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="sop-builder.html">Build an SOP</a>
+        <a href="sop-review.html">Check an SOP</a>
+        <a href="index.html#rates">Service rates</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="intro">
+        <div class="wrap intro-grid">
+          <div>
+            <p class="kicker">Process documentation field guide</p>
+            <h1>Turn a process transcript into a usable SOP.</h1>
+            <p class="lead">A transcript records what people said. A controlled procedure records what an operator must do, who owns the result, what happens when the normal path fails, and how completion is proved.</p>
+          </div>
+          <div class="outcome">
+            <strong>Finished outcome</strong>
+            <p>One bounded workflow with traceable source notes, explicit unknowns, numbered actions, quality checks, an exception path, and release metadata.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="method-strip" aria-label="Seven-step method">
+        <ol class="wrap method-grid">
+          <li><span>01</span>Set the boundary</li>
+          <li><span>02</span>Classify the talk</li>
+          <li><span>03</span>Build evidence</li>
+          <li><span>04</span>Write controls</li>
+          <li><span>05</span>Resolve gaps</li>
+          <li><span>06</span>Cold-read test</li>
+          <li><span>07</span>Release</li>
+        </ol>
+      </div>
+
+      <section class="article">
+        <div class="wrap article-layout">
+          <div>
+            <div class="article-intro">
+              <p>Do not clean up the transcript line by line. Extract a process from it.</p>
+              <p>Recordings contain side conversations, personal habits, old rules, unresolved disagreements, and details that should never appear in a shared procedure. The conversion job is to preserve process evidence while removing noise and refusing to invent missing decisions.</p>
+            </div>
+
+            <section class="step" id="boundary">
+              <p class="step-number">Step 01</p>
+              <div>
+                <h2>Set the process boundary first</h2>
+                <p>Write the four facts below before extracting any actions. If the transcript covered several workflows, choose one and put the rest in a backlog.</p>
+                <div class="process-box">
+                  <div><span>Process name</span><strong>A result-oriented name, not the meeting title</strong></div>
+                  <div><span>Trigger</span><strong>The observable event that starts the work</strong></div>
+                  <div><span>Owner</span><strong>The role accountable for the finished result</strong></div>
+                  <div><span>Complete when</span><strong>The record, handoff, or state that proves completion</strong></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="step" id="classify">
+              <p class="step-number">Step 02</p>
+              <div>
+                <h2>Classify what people said</h2>
+                <p>Tag transcript segments before turning them into instructions. The label determines whether a statement belongs in the draft or in the question list.</p>
+                <ul class="plain-list">
+                  <li><strong>Agreed rule:</strong> the group clearly confirmed the action, owner, threshold, or outcome.</li>
+                  <li><strong>Observed practice:</strong> someone described what happens today, but approval may still be required.</li>
+                  <li><strong>Open decision:</strong> the group debated an option or left a question unresolved.</li>
+                  <li><strong>Context only:</strong> history, opinion, side discussion, or detail that does not change execution.</li>
+                </ul>
+                <p>Agreed rules and confirmed practices become procedure candidates. Open decisions become questions. Context stays out.</p>
+              </div>
+            </section>
+
+            <section class="evidence-section" id="evidence">
+              <p class="section-label">Fictional extraction example</p>
+              <h2>Build an evidence ledger before writing prose</h2>
+              <p>Keep a timestamp or line reference beside each candidate. This makes review faster and prevents a polished sentence from hiding an unsupported assumption.</p>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Source note</th><th>SOP candidate</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>12:14 — “When the request arrives, I check the required fields.”</td><td>Validate the request before creating the work record.</td><td><span class="status">Confirm field list</span></td></tr>
+                    <tr><td>16:02 — “I ask Jordan when the discount is over ten percent.”</td><td>Route discounts above 10% to the approval role.</td><td><span class="status">Replace person with role</span></td></tr>
+                    <tr><td>19:47 — “Then it is done.”</td><td>Define the saved record or handoff that proves completion.</td><td><span class="status">Completion unknown</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="step" id="controls">
+              <p class="step-number">Step 03–04</p>
+              <div>
+                <h2>Convert evidence into operational controls</h2>
+                <p>Each procedure row should answer four questions without requiring the operator to replay the recording.</p>
+                <ul class="plain-list">
+                  <li><strong>Owner:</strong> which role performs or approves this action?</li>
+                  <li><strong>Action:</strong> what single observable thing does that role do?</li>
+                  <li><strong>Input:</strong> what record, condition, or prior result is required?</li>
+                  <li><strong>Complete when:</strong> what evidence shows the action passed?</li>
+                </ul>
+                <p>Start actions with verbs. Replace names with roles. Turn “normally,” “unless,” and “if it is urgent” into explicit decision rules. Put the most important verification immediately before the final handoff.</p>
+              </div>
+            </section>
+
+            <figure class="visual-proof">
+              <a href="sample-client-intake.html"><img src="sop-service-cover.png" alt="Fictional finished client intake SOP with document control, numbered steps, quality checks, exception path, and field checklist" width="1600" height="900"></a>
+              <figcaption>Fictional finished example. Open the full six-step document to inspect the structure.</figcaption>
+            </figure>
+
+            <section class="step" id="gaps">
+              <p class="step-number">Step 05</p>
+              <div>
+                <h2>Resolve gaps without inventing details</h2>
+                <p>Consolidate unknowns into one review list for the process owner. Do not bury assumptions inside fluent instructions.</p>
+                <ul class="plain-list">
+                  <li>Which role owns the handoff when the primary operator is unavailable?</li>
+                  <li>What exact threshold changes the normal path?</li>
+                  <li>Which system record is authoritative when two sources conflict?</li>
+                  <li>What should the operator do when required information is missing?</li>
+                  <li>What evidence must exist before the workflow can be closed?</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="step" id="test">
+              <p class="step-number">Step 06</p>
+              <div>
+                <h2>Run a cold-read test</h2>
+                <p>Give the draft and a safe fictional input to someone who did not attend the recording. Ask them to explain what they would do, where they would stop, and what proof they would leave behind.</p>
+                <ul class="check-list">
+                  <li>Record every question they ask.</li>
+                  <li>Mark every step that depends on unwritten system knowledge.</li>
+                  <li>Check that exceptions stop safely instead of encouraging improvisation.</li>
+                  <li>Revise the document, then repeat the ambiguous sections.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="step" id="release">
+              <p class="step-number">Step 07</p>
+              <div>
+                <h2>Release a controlled document</h2>
+                <p>Add a version, effective date, document owner, approver, and next review date. Keep the source transcript only where its access controls and retention rules allow it. Archive or replace stale procedure versions so operators can identify the current one.</p>
+              </div>
+            </section>
+
+            <section class="security">
+              <h2>Redact before sharing or pasting.</h2>
+              <p>Remove passwords, private keys, recovery codes, payment information, bank details, customer-identifying data, private contracts, and unnecessary screenshots. Replace real records with fictional examples wherever possible.</p>
+            </section>
+
+            <section class="release-gate">
+              <p class="section-label">Seven-point release gate</p>
+              <h2>Check the finished SOP</h2>
+              <ul class="check-list">
+                <li>The trigger and final completion state are observable.</li>
+                <li>One accountable role owns the process and each handoff has an owner.</li>
+                <li>Prerequisites and required inputs are explicit.</li>
+                <li>Each numbered step contains one primary action.</li>
+                <li>Critical steps state what evidence proves completion.</li>
+                <li>At least one exception path says when to stop and escalate.</li>
+                <li>Version, effective date, owner, and review timing are recorded.</li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="aside">
+            <nav aria-label="Guide sections">
+              <a href="#boundary">Set the boundary</a>
+              <a href="#classify">Classify the talk</a>
+              <a href="#evidence">Build evidence</a>
+              <a href="#controls">Write controls</a>
+              <a href="#gaps">Resolve gaps</a>
+              <a href="#test">Cold-read test</a>
+              <a href="#release">Release</a>
+            </nav>
+            <div class="aside-block">
+              <p class="section-label">Working rule</p>
+              <p>If the transcript does not prove a process fact, label the gap and ask. Do not make the draft sound more certain than the source.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </article>
+
+    <section class="tools-band">
+      <div class="wrap tools-grid">
+        <div>
+          <p class="section-label">Continue the work</p>
+          <h2>Draft, check, or hand off one workflow.</h2>
+        </div>
+        <div class="tool-list">
+          <div class="tool-row"><div><strong>Browser SOP builder</strong><span>Structure and download a Markdown procedure locally.</span></div><a href="sop-builder.html">Build an SOP</a></div>
+          <div class="tool-row"><div><strong>SOP quality checklist</strong><span>Check an existing procedure for ten document controls.</span></div><a href="sop-review.html">Check a draft</a></div>
+          <div class="tool-row"><div><strong>Forkable Markdown template</strong><span>Use the public MIT-licensed template in GitHub.</span></div><a href="https://github.com/max-agent-hub/operations-sop-template">Open template</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="section-label">Fixed-scope cleanup</p>
+          <h2>Have a redacted transcript but not a finished procedure?</h2>
+          <p>One workflow, one controlled SOP, and one field checklist start at $35. No production-system login is required.</p>
+        </div>
+        <a class="button" href="mailto:max@mackanictechnologies.com?subject=Transcript%20to%20SOP%20cleanup">Request cleanup</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>Mackanic Technologies</span>
+      <span><a href="index.html">SOP cleanup service</a> · <a href="mailto:max@mackanictechnologies.com">max@mackanictechnologies.com</a></span>
+    </div>
+  </footer>
+</body>
+</html>

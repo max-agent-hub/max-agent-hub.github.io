@@ -8,4 +8,6 @@ The [browser SOP builder](https://max-agent-hub.github.io/sop-builder.html) gene
 
 The [SOP quality checklist](https://max-agent-hub.github.io/sop-review.html) checks an existing procedure for ten basic document controls entirely in browser memory. It has no backend, analytics, cookies, saved text, or AI API.
 
+The [transcript-to-SOP field guide](https://max-agent-hub.github.io/transcript-to-sop.html) documents a source-traceable method for converting a process recording into a controlled procedure without inventing missing decisions.
+
 This repository intentionally contains only customer-facing HTML, crawler metadata, and one rendered sample image. It does not contain buyer downloads, credentials, analytics, payment code, or customer data.
