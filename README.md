@@ -1,5 +1,5 @@
 # Mackanic Technologies Service Site
 
-Public landing page for the Mackanic Technologies SOP and checklist cleanup service.
+Public service page and fictional work sample for the Mackanic Technologies SOP and checklist cleanup service.
 
-This repository intentionally contains only customer-facing HTML and one marketing image. It does not contain buyer downloads, credentials, analytics, payment code, or customer data.
+This repository intentionally contains only customer-facing HTML, crawler metadata, and one rendered sample image. It does not contain buyer downloads, credentials, analytics, payment code, or customer data.
