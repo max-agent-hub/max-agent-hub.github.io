@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOP Cleanup for Small Teams | Mackanic Technologies</title>
-  <meta name="description" content="Fixed-scope SOP and checklist cleanup from Mackanic Technologies. Turn rough notes and transcripts into usable procedures without sharing system access.">
+  <meta name="description" content="Fixed-scope SOP cleanup, practical templates, and security checklists from Mackanic Technologies. Improve repeatable work without sharing system access.">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta property="og:type" content="website">
@@ -15,6 +15,7 @@
   <meta property="og:image:width" content="1600">
   <meta property="og:image:height" content="900">
   <link rel="canonical" href="https://max-agent-hub.github.io/">
+  <link rel="icon" href="sop-service-cover.png" type="image/png">
   <style>
     :root {
       --ink: #17201d;
@@ -71,16 +72,15 @@
     .skip-link {
       position: fixed;
       top: 12px;
-      left: 12px;
+      left: -999px;
       z-index: 20;
       padding: 10px 14px;
       background: var(--white);
       color: var(--ink);
-      transform: translateY(-180%);
     }
 
     .skip-link:focus {
-      transform: translateY(0);
+      left: 12px;
     }
 
     .site-header {
@@ -536,6 +536,94 @@
       font-size: 12px;
     }
 
+    .products {
+      background: var(--paper);
+    }
+
+    .products-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(320px, 0.55fr);
+      gap: 80px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 2px solid var(--ink);
+    }
+
+    .product-item {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.72fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      padding: 30px 30px 30px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .product-item + .product-item {
+      padding-right: 0;
+      padding-left: 30px;
+      border-left: 1px solid var(--rule);
+    }
+
+    .product-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-type {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--signal);
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .product-copy h3 {
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 1.16;
+    }
+
+    .product-copy p {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .product-buy {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .product-price {
+      min-width: 42px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .product-buy .button {
+      min-height: 42px;
+      padding: 0 14px;
+      font-size: 12px;
+    }
+
     .tools-grid {
       display: grid;
       grid-template-columns: minmax(0, 0.55fr) minmax(480px, 0.85fr);
@@ -657,7 +745,7 @@
     }
 
     @media (max-width: 980px) {
-      .nav-links a:nth-child(3) {
+      .nav-links .nav-tools {
         display: none;
       }
 
@@ -671,6 +759,7 @@
 
       .deliverables-head,
       .sample-header,
+      .products-head,
       .scope-grid,
       .tools-grid {
         grid-template-columns: 1fr;
@@ -912,6 +1001,18 @@
         margin-top: 8px;
       }
 
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-item,
+      .product-item + .product-item {
+        grid-template-columns: minmax(118px, 0.55fr) minmax(0, 1fr);
+        gap: 20px;
+        padding: 24px 0;
+        border-left: 0;
+      }
+
       .tools-grid {
         grid-template-columns: 1fr;
       }
@@ -936,6 +1037,17 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .product-item,
+      .product-item + .product-item {
+        grid-template-columns: 1fr;
+      }
+
+      .product-buy .button {
+        flex: 1 1 180px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -954,7 +1066,8 @@
       <div class="nav-links">
         <a href="#sample">Work sample</a>
         <a href="#rates">Rates</a>
-        <a href="#tools">Free tools</a>
+        <a href="#downloads">Downloads</a>
+        <a class="nav-tools" href="#tools">Free tools</a>
         <a class="nav-contact" href="#contact">Start a project</a>
       </div>
     </nav>
@@ -1084,10 +1197,52 @@
       </div>
     </section>
 
+    <section class="section products" id="downloads" aria-labelledby="downloads-title">
+      <div class="wrap">
+        <div class="products-head">
+          <div>
+            <p class="section-marker">05 / DOWNLOADS</p>
+            <h2 class="section-title" id="downloads-title">Useful before you need custom documentation.</h2>
+          </div>
+          <p class="section-intro">Two focused kits for recurring operational work. Each download includes editable source files and a clear boundary around what the material does.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-item">
+            <div class="product-media">
+              <img src="sop-template-pack.png" alt="SOP Template Pack cover showing a structured operations document" width="1600" height="1200" loading="lazy">
+            </div>
+            <div class="product-copy">
+              <span class="product-type">Digital download</span>
+              <h3>SOP Template Pack</h3>
+              <p>Build repeatable procedures with editable templates for the SOP, field checklist, revision log, and ownership map.</p>
+              <div class="product-buy">
+                <span class="product-price">$15</span>
+                <a class="button" href="https://payhip.com/b/LzFha">View the pack</a>
+              </div>
+            </div>
+          </article>
+          <article class="product-item">
+            <div class="product-media">
+              <img src="freelancer-security-starter-kit.png" alt="Freelancer Security Starter Kit cover showing practical account and device controls" width="1600" height="1200" loading="lazy">
+            </div>
+            <div class="product-copy">
+              <span class="product-type">Digital download</span>
+              <h3>Freelancer Security Starter Kit</h3>
+              <p>Set up the baseline controls for accounts, devices, backups, client files, incidents, and offboarding.</p>
+              <div class="product-buy">
+                <span class="product-price">$9</span>
+                <a class="button" href="https://payhip.com/b/xOrNA">View the kit</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="tools" aria-labelledby="tools-title">
       <div class="wrap tools-grid">
         <div>
-          <p class="section-marker">05 / FREE TOOLS</p>
+          <p class="section-marker">06 / FREE TOOLS</p>
           <h2 class="section-title" id="tools-title">Do it yourself with the same controls.</h2>
           <p class="section-intro">The browser tools run locally and do not require an account. Use the field guide when the source is a meeting or screen recording.</p>
         </div>
@@ -1130,6 +1285,6 @@
     </section>
   </main>
 
-  <footer>Mackanic Technologies / SOP and checklist cleanup / Fixed-scope remote service</footer>
+  <footer>Mackanic Technologies / SOP cleanup / Practical download kits</footer>
 </body>
 </html>
