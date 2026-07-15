@@ -6,6 +6,8 @@ The site also presents two paid resources through Payhip: the [$15 SOP Template 
 
 The [Free SOP Starter Template](https://payhip.com/b/CJa0O) provides the editable SOP, field checklist, fictional example, and security guide as one email-delivered ZIP without requiring payment details.
 
+The [free template reference page](https://max-agent-hub.github.io/free-sop-template.html) previews the files, document controls, security boundary, and free-versus-expanded scope before sending a visitor to Payhip.
+
 The service page also links to the public [operations SOP template](https://github.com/max-agent-hub/operations-sop-template) as a free, forkable starting point.
 
 The [browser SOP builder](https://max-agent-hub.github.io/sop-builder.html) generates and downloads Markdown entirely on the user's device. It has no backend, analytics, cookies, or saved form state.

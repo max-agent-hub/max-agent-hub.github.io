@@ -31,7 +31,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://max-agent-hub.github.io/free-sop-template.html</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://max-agent-hub.github.io/browser-sop-builder/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://max-agent-hub.github.io/sop-quality-checker/</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
