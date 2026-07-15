@@ -2,6 +2,8 @@
 
 Public service page and fictional work sample for the Mackanic Technologies SOP and checklist cleanup service.
 
+The [$35 SOP Cleanup Review](https://payhip.com/b/S1UWX) uses a gated intake form so each one-workflow request can be checked for scope and sensitive-data risk before checkout.
+
 The site also presents two paid resources through Payhip: the [$15 SOP Template Pack](https://payhip.com/b/LzFha) and the [$9 Freelancer Security Starter Kit](https://payhip.com/b/xOrNA).
 
 The [Free SOP Starter Template](https://payhip.com/b/CJa0O) provides the editable SOP, field checklist, fictional example, and security guide as one email-delivered ZIP without requiring payment details.
