@@ -395,6 +395,12 @@
       font-size: 13px;
     }
 
+    .next-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .disclaimer {
       margin: 14px 0 0;
       color: var(--muted);
@@ -587,7 +593,10 @@
             <p class="section-label">Fixed-scope cleanup</p>
             <h2>Need the gaps resolved?</h2>
             <p>Send rough notes or a redacted draft. No system login is required. One workflow starts at $35.</p>
-            <a class="button" id="service-email" href="mailto:max@mackanictechnologies.com?subject=SOP%20cleanup%20request">Request cleanup</a>
+            <div class="next-actions">
+              <a class="button" id="service-email" href="mailto:max@mackanictechnologies.com?subject=SOP%20cleanup%20request">Request cleanup</a>
+              <a class="button button-secondary" href="https://payhip.com/b/CJa0O">Get the free starter</a>
+            </div>
           </div>
           <p class="disclaimer">This is a structural checklist, not legal, safety, regulatory, or professional certification.</p>
         </div>

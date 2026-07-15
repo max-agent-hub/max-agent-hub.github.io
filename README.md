@@ -4,6 +4,8 @@ Public service page and fictional work sample for the Mackanic Technologies SOP 
 
 The site also presents two paid resources through Payhip: the [$15 SOP Template Pack](https://payhip.com/b/LzFha) and the [$9 Freelancer Security Starter Kit](https://payhip.com/b/xOrNA).
 
+The [Free SOP Starter Template](https://payhip.com/b/CJa0O) provides the editable SOP, field checklist, fictional example, and security guide as one email-delivered ZIP without requiring payment details.
+
 The service page also links to the public [operations SOP template](https://github.com/max-agent-hub/operations-sop-template) as a free, forkable starting point.
 
 The [browser SOP builder](https://max-agent-hub.github.io/sop-builder.html) generates and downloads Markdown entirely on the user's device. It has no backend, analytics, cookies, or saved form state.
