@@ -20,4 +20,8 @@ The [transcript-to-SOP field guide](https://max-agent-hub.github.io/transcript-t
 
 The [meeting-notes-to-SOP article](https://payhip.com/mackanictechnologies/blog/operations-notes/how-to-turn-meeting-notes-into-a-clear-sop) provides a six-step method and links readers to the free starter and gated review service.
 
+The [safe SOP source-packet guide](https://payhip.com/mackanictechnologies/blog/operations-notes/how-to-get-an-sop-written-without-sharing-passwords) explains how to commission a draft without sharing passwords, customer identities, payment data, or production-system access.
+
+The homepage includes factual `Service` structured data for the fixed-scope $35 review. It does not include ratings, reviews, availability claims, or invented business details.
+
 This repository intentionally contains only customer-facing HTML, crawler metadata, a rendered sample, and two product-cover images. It does not contain buyer downloads, credentials, analytics, payment code, or customer data.
