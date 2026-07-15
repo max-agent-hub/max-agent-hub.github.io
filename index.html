@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOP and Checklist Cleanup Service | Mackanic Technologies</title>
+  <meta name="description" content="A productized freelance service that turns rough process notes into clean SOPs, checklists, and onboarding summaries.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://max-agent-hub.github.io/">
+  <meta property="og:title" content="SOP and Checklist Cleanup Service | Mackanic Technologies">
+  <meta property="og:description" content="Turn rough process notes into a clear SOP and checklist, starting at $35.">
+  <meta property="og:image" content="sop-service-cover.png">
+  <link rel="canonical" href="https://max-agent-hub.github.io/">
+  <style>
+    :root {
+      --ink: #182127;
+      --muted: #52606a;
+      --line: #dbe2e7;
+      --surface: #f7f8f8;
+      --accent: #0f766e;
+      --accent-dark: #0b514c;
+      --max: 1060px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .brand-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 24px;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .brand-bar a { text-decoration: none; }
+
+    header,
+    section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 42px;
+      align-items: center;
+      min-height: 520px;
+    }
+
+    .eyebrow {
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: 46px;
+      line-height: 1.07;
+      letter-spacing: 0;
+      margin: 0 0 18px;
+    }
+
+    h2 {
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: 0;
+      margin: 0 0 18px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 640px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--accent-dark);
+      border-radius: 6px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 14px;
+    }
+
+    .button-row .button {
+      margin-top: 0;
+    }
+
+    .button-secondary {
+      background: #ffffff;
+      color: var(--accent-dark);
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(29, 47, 53, 0.09);
+      padding: 20px;
+    }
+
+    .sample {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+
+    .process-visual {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 0 0 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: #ffffff;
+    }
+
+    ul {
+      margin: 0 0 12px 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-top: 12px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      padding: 10px;
+      word-wrap: break-word;
+    }
+
+    th {
+      background: var(--surface);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .hero,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 35px;
+      }
+
+      .button-row {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="brand-bar" aria-label="Store">
+    <a href="/">Mackanic Technologies</a>
+  </nav>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <p class="eyebrow">Productized operations documentation</p>
+        <h1>Turn rough process notes into SOPs your team can actually use.</h1>
+        <p class="lead">A fixed-scope service for founders, agencies, consultants, and small teams that need clean workflows, checklists, and onboarding summaries without giving a freelancer access to private systems.</p>
+        <div class="button-row">
+          <a class="button" href="mailto:max@mackanictechnologies.com?subject=SOP%20cleanup%20project">Request a fixed-price test</a>
+          <a class="button button-secondary" href="https://payhip.com/mackanictechnologies/contact">Use contact form</a>
+        </div>
+        <p class="muted">Fixed-scope projects only. No account or production-system access required.</p>
+      </div>
+      <aside class="panel">
+        <h2>Starter package</h2>
+        <p><strong>$35 fixed-price test</strong></p>
+        <ul>
+          <li>One SOP from notes, screenshots, or a transcript</li>
+          <li>One quick-reference checklist</li>
+          <li>One revision</li>
+          <li>No login access required</li>
+        </ul>
+        <p class="muted">Good fit: onboarding, client delivery, admin handoffs, support processes, and recurring internal tasks.</p>
+      </aside>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>Sample transformation</h2>
+      <img class="process-visual" src="sop-service-cover.png" alt="Example showing messy process notes transformed into an SOP with an owner, steps, quality checks, and exception handling" width="1600" height="900">
+      <div class="grid">
+        <article class="card">
+          <h3>Before</h3>
+          <p class="muted">"When a client pays, make the folder, send the form, set up the project, assign someone, and make sure the kickoff happens soon."</p>
+        </article>
+        <article class="card">
+          <h3>After</h3>
+          <p>New client intake SOP with trigger, owner, prerequisites, steps, quality checks, and exceptions.</p>
+        </article>
+        <article class="card">
+          <h3>Checklist</h3>
+          <p>Payment confirmed, folder created, onboarding email sent, project record created, owner assigned, kickoff scheduled.</p>
+        </article>
+      </div>
+
+      <div class="sample">
+        <h3>Mini SOP sample: New client intake</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Documented output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Purpose</td>
+              <td>Make sure every new client receives the same onboarding experience.</td>
+            </tr>
+            <tr>
+              <td>Trigger</td>
+              <td>A new client signs the agreement and first payment is confirmed.</td>
+            </tr>
+            <tr>
+              <td>Core steps</td>
+              <td>Create folder, add agreement, send onboarding email, create task record, assign owner, schedule kickoff.</td>
+            </tr>
+            <tr>
+              <td>Quality checks</td>
+              <td>Confirm client name, email, payment status, kickoff date, and that no credentials were requested by email.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Offer ladder</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Entry</h3>
+          <p><strong>$35</strong></p>
+          <p class="muted">One workflow cleaned into one SOP and checklist.</p>
+        </article>
+        <article class="card">
+          <h3>Core</h3>
+          <p><strong>$175</strong></p>
+          <p class="muted">Three related workflows with a handoff map.</p>
+        </article>
+        <article class="card">
+          <h3>Retainer</h3>
+          <p><strong>$250/month</strong></p>
+          <p class="muted">Two SOPs or checklists per month plus backlog review.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Security boundaries</h2>
+      <ul>
+        <li>No passwords, private keys, bank details, or payment data should be sent.</li>
+        <li>No login access is needed for the starter package.</li>
+        <li>Sensitive customer details should be removed before sharing source notes.</li>
+        <li>Files should be sent as plain text, docs, PDFs, screenshots, or normal cloud links.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Mackanic Technologies · <a href="mailto:max@mackanictechnologies.com">max@mackanictechnologies.com</a>
+  </footer>
+</body>
+</html>
